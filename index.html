@@ -1,140 +1,314 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>charlie flowers</title>
-  <!-- Google Font: Outfit -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- Ivy Presto (local) -->
+
+  <!-- Outfit (Google Fonts) -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Ivy Presto (local file) -->
   <style>
     @font-face {
-      font-family: 'IvyPresto';
-      src: url('ivy-presto-headline.otf') format('opentype');
-      font-weight: normal;
+      font-family: "IvyPresto";
+      src: url("ivy-presto-headline.otf") format("opentype");
+      font-weight: 400;
       font-style: normal;
+      font-display: swap;
     }
   </style>
+
   <style>
-    body {
-      background: #0b0b0b;
-      color: #eee;
-      font-family: 'Outfit', sans-serif;
-      margin: 40px auto;
-      max-width: 720px;
-      line-height: 1.55;
+    :root{
+      --bg:#0b0b0b;
+      --muted:#9da3a7;
+      --accent:#9ecbff;
+      --text:#f5f5f5;
+      --maxw:1200px;
     }
 
-    a {
-      color: #9ecbff;
-      text-decoration: none;
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Outfit",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      overflow-x:hidden;
     }
 
-    a:hover {
-      text-decoration: underline;
+    /* page container */
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:36px 28px;
     }
 
-    hr {
-      border: none;
-      border-top: 1px solid #333;
-      margin: 28px 0;
+    /* top micro-menu button */
+    .menu-wrap{
+      position:fixed;
+      left:50%;
+      transform:translateX(-50%);
+      top:18px;
+      z-index:40;
+    }
+    .menu-btn{
+      background:rgba(245,245,245,0.06);
+      color:var(--text);
+      border-radius:999px;
+      padding:8px 18px;
+      border:1px solid rgba(255,255,255,0.04);
+      font-size:14px;
+      backdrop-filter: blur(6px);
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
     }
 
-    header {
-      margin-bottom: 30px;
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height:68vh;
+      display:flex;
+      align-items:flex-end;
+      padding:36px;
+      margin-bottom:48px;
+      overflow:hidden;
+      border-radius:6px;
     }
 
-    header .topline {
-      display: flex;
-      justify-content: space-between;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.9rem;
+    /* large blurred backdrop word/shape */
+    .hero::before{
+      content:"BASS";
+      position:absolute;
+      left:50%;
+      top:48%;
+      transform:translate(-50%,-50%) scale(1.12);
+      font-size:28vw;                 /* huge, scales with viewport */
+      line-height:0.8;
+      font-weight:900;
+      font-family: "Outfit", sans-serif;
+      color: #ffb3a9;
+      filter: blur(36px) saturate(120%);
+      opacity:0.92;
+      mix-blend-mode:screen;
+      pointer-events:none;
+      user-select:none;
+      letter-spacing:-0.02em;
+      text-transform:uppercase;
     }
 
-    h1 {
-      font-size: 1.6rem;
-      margin-bottom: 6px;
+    /* warm gradient overlay */
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, rgba(255,150,100,0.06), rgba(200,40,20,0.14) 45%, rgba(80,10,10,0.18));
+      mix-blend-mode:multiply;
+      pointer-events:none;
     }
 
-    .section-title {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 1rem;
-      margin-top: 40px;
-      margin-bottom: 10px;
-      color: #ccc;
+    /* hero content (foreground) */
+    .hero-content{
+      position:relative;
+      z-index:10;
+      width:100%;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:20px;
+      padding-bottom:44px;
     }
 
-    .project {
-      margin-bottom: 22px;
+    .hero-left{
+      max-width:54%;
     }
 
-    .project-title {
-      font-weight: bold;
+    .logo{
+      font-size:28px;
+      margin-bottom:6px;
+      font-family:"Outfit",sans-serif;
+      letter-spacing:0;
     }
 
-    footer {
-      margin-top: 40px;
-      font-size: 0.8rem;
-      color: #777;
-      text-align: center;
+    .headline{
+      font-family:"IvyPresto", "Georgia", serif;
+      font-size:48px;
+      color:var(--text);
+      margin:6px 0 4px 0;
+      line-height:0.88;
+      letter-spacing:0.02em;
+    }
+
+    .sub{
+      color:var(--muted);
+      font-size:14px;
+      margin-top:8px;
+    }
+
+    .hero-right{
+      text-align:right;
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    /* sections */
+    .section{
+      margin:28px 0 56px;
+      padding:10px 6px;
+    }
+
+    .section h2{
+      font-family:"IvyPresto","Outfit",serif;
+      font-size:28px;
+      margin:0 0 12px 0;
+      letter-spacing:0.12em;
+      font-weight:400;
+      color:var(--text);
+    }
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:22px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.03);
+      padding:18px;
+      border-radius:6px;
+      min-height:120px;
+    }
+
+    .card h3{
+      margin:0 0 8px 0;
+      font-size:18px;
+      font-weight:600;
+      color:var(--text);
+    }
+
+    .card p{ color:var(--muted); margin:0; font-size:13px }
+
+    /* archive list */
+    ul.archive{ color:var(--muted); padding-left:18px; margin:8px 0 0 0; }
+
+    /* contact */
+    .contact a{ color:var(--accent); text-decoration:none; border-bottom:1px dotted rgba(158,203,255,0.35); padding-bottom:2px; }
+
+    /* footer */
+    footer{ color:#777; font-size:13px; text-align:center; margin:40px 0 20px; }
+
+    /* small devices */
+    @media (max-width:880px){
+      .hero{ min-height:56vh; padding:22px; }
+      .hero::before{ font-size:46vw; filter: blur(28px); }
+      .hero-left{ max-width:100% }
+      .headline{ font-size:34px }
+      .logo{ font-size:20px }
+    }
+
+    @media (max-width:480px){
+      .hero::before{ font-size:60vw; filter: blur(20px); opacity:0.9 }
+      .headline{ font-size:26px; line-height:1 }
+      .hero-content{ flex-direction:column; align-items:flex-start; gap:8px }
+      .hero-right{ text-align:left }
+      .wrap{ padding:18px }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div style="font-size:2rem; margin-bottom:10px;">❀</div>
-    <div class="topline">
-      <div>charlie flowers</div>
-      <nav>
-        <a href="#">home</a> · <a href="#about">about</a>
-      </nav>
-    </div>
-  </header>
 
-  <h1>hi, i'm charlie.</h1>
-  <p>i make music, sound experiments, and audio projects.</p>
-
-  <div class="section-title">[ featured projects ]</div>
-  <hr />
-
-  <div class="project">
-    <div class="project-title">► "glass wings" — ambient / electronic</div>
-    <p>short description here (1–2 lines)</p>
-    <a href="#">[listen]</a> <a href="#">[info]</a>
+  <!-- Menu button (micro) -->
+  <div class="menu-wrap">
+    <button class="menu-btn" id="menuBtn">Menu</button>
   </div>
 
-  <div class="project">
-    <div class="project-title">► "drift sequence" — lo-fi texture study</div>
-    <p>minimal writeup goes here</p>
-    <a href="#">[listen]</a> <a href="#">[info]</a>
-  </div>
+  <main class="wrap">
 
-  <div class="project">
-    <div class="project-title">► "signal bloom" — sound design reel</div>
-    <p>description here</p>
-    <a href="#">[watch]</a> <a href="#">[info]</a>
-  </div>
+    <!-- HERO -->
+    <section class="hero" role="banner" aria-label="Intro">
+      <div class="hero-content">
+        <div class="hero-left">
+          <div class="logo">❀</div>
+          <h1 class="headline">hi — i'm charlie.</h1>
+          <div class="sub">music producer • sound designer • field recordings</div>
+        </div>
 
-  <div class="section-title">[ archive ]</div>
-  <hr />
+        <div class="hero-right">
+          <div>Barcelona Arts Summer School</div>
+          <div style="margin-top:6px; font-size:12px; color:var(--muted)">by ESCAC / ESMUC / Institut del Teatre</div>
+        </div>
+      </div>
+    </section>
 
-  <ul>
-    <li>2025 — demo 04</li>
-    <li>2024 — untitled loop series</li>
-    <li>2024 — ambient sketches vol. 2</li>
-    <li>2023 — longform drone piece “ferns”</li>
-  </ul>
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <h2>[ featured projects ]</h2>
+      <div class="projects">
+        <article class="card">
+          <h3>glass wings — ambient / electronic</h3>
+          <p>short description here — a small palette of granular synth textures and tape loops.</p>
+        </article>
 
-  <div class="section-title">[ contact ]</div>
-  <hr />
+        <article class="card">
+          <h3>drift sequence — lo-fi texture study</h3>
+          <p>minimal experiments with degraded samples and tactile rhythms.</p>
+        </article>
 
-  <p>
-    email: <a href="mailto:charlie@charlieflowers.shop">charlie@charlieflowers.shop</a><br />
-    instagram / soundcloud / github
-  </p>
+        <article class="card">
+          <h3>signal bloom — sound design reel</h3>
+          <p>— soundscapes, patches, and electroacoustic pieces.</p>
+        </article>
+      </div>
+    </section>
 
-  <footer>
-    site built by hand • github pages • 2025
-  </footer>
+    <!-- Archive -->
+    <section class="section" id="archive">
+      <h2>[ archive ]</h2>
+      <ul class="archive">
+        <li>2025 — demo 04</li>
+        <li>2024 — untitled loop series</li>
+        <li>2024 — ambient sketches vol. 2</li>
+        <li>2023 — longform drone piece “ferns”</li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <h2>[ contact ]</h2>
+      <div class="contact">
+        <p>email: <a href="mailto:charlie@charlieflowers.shop">charlie@charlieflowers.shop</a></p>
+        <p style="margin-top:8px">instagram / soundcloud / github</p>
+      </div>
+    </section>
+
+    <footer>
+      site built by hand • github pages • 2025
+    </footer>
+  </main>
+
+  <script>
+    // tiny menu demo — replace with real nav if desired
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn.addEventListener('click', () => {
+      const items = [
+        {t:'home', href:'#'},
+        {t:'about', href:'#'},
+        {t:'projects', href:'#projects'},
+        {t:'contact', href:'#contact'}
+      ];
+      const html = items.map(i => `<div style="padding:10px 12px;"><a href="${i.href}" style="color:var(--text); text-decoration:none; font-weight:600">${i.t}</a></div>`).join('');
+      const win = window.open('','_blank','width=260,height=320,noopener');
+      win.document.body.style.background = '#0b0b0b';
+      win.document.body.style.color = '#eee';
+      win.document.body.style.fontFamily = 'Outfit, sans-serif';
+      win.document.body.style.padding = '18px';
+      win.document.body.innerHTML = '<div style="font-weight:700;margin-bottom:6px">Menu</div>' + html;
+    });
+  </script>
 </body>
 </html>
