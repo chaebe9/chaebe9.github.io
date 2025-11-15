@@ -1,314 +1,183 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>charlie flowers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>charlieflowers - audio project archive</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Outfit (Google Fonts) -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+        body {
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            background: #000;
+            color: #1a1a1a;
+            padding: 0;
+            margin: 0;
+        }
 
-  <!-- Ivy Presto (local file) -->
-  <style>
-    @font-face {
-      font-family: "IvyPresto";
-      src: url("ivy-presto-headline.otf") format("opentype");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-  </style>
+        .page-wrapper {
+            background: #000;
+            padding: 30px;
+            min-height: 100vh;
+        }
 
-  <style>
-    :root{
-      --bg:#0b0b0b;
-      --muted:#9da3a7;
-      --accent:#9ecbff;
-      --text:#f5f5f5;
-      --maxw:1200px;
-    }
+        .main-frame {
+            background: #e5e5e5;
+            border: 1px solid #000;
+            min-height: calc(100vh - 120px);
+            margin-bottom: 30px;
+        }
 
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:"Outfit",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-      overflow-x:hidden;
-    }
+        header {
+            padding: 40px 50px 30px 50px;
+        }
 
-    /* page container */
-    .wrap{
-      max-width:var(--maxw);
-      margin:0 auto;
-      padding:36px 28px;
-    }
+        .site-title {
+            font-size: 120px;
+            font-weight: 400;
+            line-height: 0.85;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+        }
+        
+        .site-title .medium {
+            font-weight: 500;
+        }
 
-    /* top micro-menu button */
-    .menu-wrap{
-      position:fixed;
-      left:50%;
-      transform:translateX(-50%);
-      top:18px;
-      z-index:40;
-    }
-    .menu-btn{
-      background:rgba(245,245,245,0.06);
-      color:var(--text);
-      border-radius:999px;
-      padding:8px 18px;
-      border:1px solid rgba(255,255,255,0.04);
-      font-size:14px;
-      backdrop-filter: blur(6px);
-      cursor:pointer;
-      box-shadow:0 6px 18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-    }
+        .site-subtitle {
+            font-size: 11px;
+            letter-spacing: 0.4em;
+            color: #888;
+            font-weight: 400;
+            margin-left: 2px;
+        }
 
-    /* HERO */
-    .hero{
-      position:relative;
-      min-height:68vh;
-      display:flex;
-      align-items:flex-end;
-      padding:36px;
-      margin-bottom:48px;
-      overflow:hidden;
-      border-radius:6px;
-    }
+        .content-area {
+            padding: 50px;
+            min-height: 400px;
+        }
 
-    /* large blurred backdrop word/shape */
-    .hero::before{
-      content:"BASS";
-      position:absolute;
-      left:50%;
-      top:48%;
-      transform:translate(-50%,-50%) scale(1.12);
-      font-size:28vw;                 /* huge, scales with viewport */
-      line-height:0.8;
-      font-weight:900;
-      font-family: "Outfit", sans-serif;
-      color: #ffb3a9;
-      filter: blur(36px) saturate(120%);
-      opacity:0.92;
-      mix-blend-mode:screen;
-      pointer-events:none;
-      user-select:none;
-      letter-spacing:-0.02em;
-      text-transform:uppercase;
-    }
+        .bottom-nav {
+            background: #e5e5e5;
+            border: 1px solid #000;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    /* warm gradient overlay */
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(120deg, rgba(255,150,100,0.06), rgba(200,40,20,0.14) 45%, rgba(80,10,10,0.18));
-      mix-blend-mode:multiply;
-      pointer-events:none;
-    }
+        .flower-icon {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 32px;
+            cursor: pointer;
+            line-height: 1;
+            user-select: none;
+        }
+        
+        .flower-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #1a1a1a;
+            stroke-width: 1.5;
+            fill: none;
+        }
 
-    /* hero content (foreground) */
-    .hero-content{
-      position:relative;
-      z-index:10;
-      width:100%;
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:20px;
-      padding-bottom:44px;
-    }
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+        }
 
-    .hero-left{
-      max-width:54%;
-    }
+        .nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
 
-    .logo{
-      font-size:28px;
-      margin-bottom:6px;
-      font-family:"Outfit",sans-serif;
-      letter-spacing:0;
-    }
+        .nav-links a:hover {
+            opacity: 0.5;
+        }
 
-    .headline{
-      font-family:"IvyPresto", "Georgia", serif;
-      font-size:48px;
-      color:var(--text);
-      margin:6px 0 4px 0;
-      line-height:0.88;
-      letter-spacing:0.02em;
-    }
+        @media (max-width: 768px) {
+            .page-wrapper {
+                padding: 15px;
+            }
 
-    .sub{
-      color:var(--muted);
-      font-size:14px;
-      margin-top:8px;
-    }
+            .main-frame {
+                min-height: calc(100vh - 80px);
+                margin-bottom: 15px;
+            }
 
-    .hero-right{
-      text-align:right;
-      color:var(--muted);
-      font-size:13px;
-      white-space:nowrap;
-    }
+            header {
+                padding: 30px 25px 20px 25px;
+            }
 
-    /* sections */
-    .section{
-      margin:28px 0 56px;
-      padding:10px 6px;
-    }
+            .site-title {
+                font-size: 60px;
+            }
 
-    .section h2{
-      font-family:"IvyPresto","Outfit",serif;
-      font-size:28px;
-      margin:0 0 12px 0;
-      letter-spacing:0.12em;
-      font-weight:400;
-      color:var(--text);
-    }
+            .site-subtitle {
+                font-size: 9px;
+            }
 
-    .projects{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:22px;
-    }
+            .content-area {
+                padding: 25px;
+            }
 
-    .card{
-      background:rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.03);
-      padding:18px;
-      border-radius:6px;
-      min-height:120px;
-    }
+            .bottom-nav {
+                padding: 20px 25px;
+            }
 
-    .card h3{
-      margin:0 0 8px 0;
-      font-size:18px;
-      font-weight:600;
-      color:var(--text);
-    }
+            .nav-links {
+                gap: 20px;
+                font-size: 10px;
+            }
 
-    .card p{ color:var(--muted); margin:0; font-size:13px }
-
-    /* archive list */
-    ul.archive{ color:var(--muted); padding-left:18px; margin:8px 0 0 0; }
-
-    /* contact */
-    .contact a{ color:var(--accent); text-decoration:none; border-bottom:1px dotted rgba(158,203,255,0.35); padding-bottom:2px; }
-
-    /* footer */
-    footer{ color:#777; font-size:13px; text-align:center; margin:40px 0 20px; }
-
-    /* small devices */
-    @media (max-width:880px){
-      .hero{ min-height:56vh; padding:22px; }
-      .hero::before{ font-size:46vw; filter: blur(28px); }
-      .hero-left{ max-width:100% }
-      .headline{ font-size:34px }
-      .logo{ font-size:20px }
-    }
-
-    @media (max-width:480px){
-      .hero::before{ font-size:60vw; filter: blur(20px); opacity:0.9 }
-      .headline{ font-size:26px; line-height:1 }
-      .hero-content{ flex-direction:column; align-items:flex-start; gap:8px }
-      .hero-right{ text-align:left }
-      .wrap{ padding:18px }
-    }
-  </style>
+            .flower-icon {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Menu button (micro) -->
-  <div class="menu-wrap">
-    <button class="menu-btn" id="menuBtn">Menu</button>
-  </div>
-
-  <main class="wrap">
-
-    <!-- HERO -->
-    <section class="hero" role="banner" aria-label="Intro">
-      <div class="hero-content">
-        <div class="hero-left">
-          <div class="logo">❀</div>
-          <h1 class="headline">hi — i'm charlie.</h1>
-          <div class="sub">music producer • sound designer • field recordings</div>
+    <div class="page-wrapper">
+        <div class="main-frame">
+            <header>
+                <h1 class="site-title">charlie<span class="medium">flowers</span></h1>
+                <p class="site-subtitle">audio project archive</p>
+            </header>
+            
+            <div class="content-area">
+                <!-- Content will go here -->
+            </div>
         </div>
 
-        <div class="hero-right">
-          <div>Barcelona Arts Summer School</div>
-          <div style="margin-top:6px; font-size:12px; color:var(--muted)">by ESCAC / ESMUC / Institut del Teatre</div>
+        <div class="bottom-nav">
+            <div class="flower-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3 L12 9 M12 15 L12 21 M3 12 L9 12 M15 12 L21 12 M5.636 5.636 L10.05 10.05 M13.95 13.95 L18.364 18.364 M5.636 18.364 L10.05 13.95 M13.95 10.05 L18.364 5.636" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+            </div>
+            <nav class="nav-links">
+                <a href="#archive">archive</a>
+                <a href="#about">about</a>
+            </nav>
         </div>
-      </div>
-    </section>
+    </div>
 
-    <!-- Projects -->
-    <section class="section" id="projects">
-      <h2>[ featured projects ]</h2>
-      <div class="projects">
-        <article class="card">
-          <h3>glass wings — ambient / electronic</h3>
-          <p>short description here — a small palette of granular synth textures and tape loops.</p>
-        </article>
-
-        <article class="card">
-          <h3>drift sequence — lo-fi texture study</h3>
-          <p>minimal experiments with degraded samples and tactile rhythms.</p>
-        </article>
-
-        <article class="card">
-          <h3>signal bloom — sound design reel</h3>
-          <p>— soundscapes, patches, and electroacoustic pieces.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Archive -->
-    <section class="section" id="archive">
-      <h2>[ archive ]</h2>
-      <ul class="archive">
-        <li>2025 — demo 04</li>
-        <li>2024 — untitled loop series</li>
-        <li>2024 — ambient sketches vol. 2</li>
-        <li>2023 — longform drone piece “ferns”</li>
-      </ul>
-    </section>
-
-    <!-- Contact -->
-    <section class="section" id="contact">
-      <h2>[ contact ]</h2>
-      <div class="contact">
-        <p>email: <a href="mailto:charlie@charlieflowers.shop">charlie@charlieflowers.shop</a></p>
-        <p style="margin-top:8px">instagram / soundcloud / github</p>
-      </div>
-    </section>
-
-    <footer>
-      made with love • 2025
-    </footer>
-  </main>
-
-  <script>
-    // tiny menu demo — replace with real nav if desired
-    const menuBtn = document.getElementById('menuBtn');
-    menuBtn.addEventListener('click', () => {
-      const items = [
-        {t:'home', href:'#'},
-        {t:'about', href:'#'},
-        {t:'projects', href:'#projects'},
-        {t:'contact', href:'#contact'}
-      ];
-      const html = items.map(i => `<div style="padding:10px 12px;"><a href="${i.href}" style="color:var(--text); text-decoration:none; font-weight:600">${i.t}</a></div>`).join('');
-      const win = window.open('','_blank','width=260,height=320,noopener');
-      win.document.body.style.background = '#0b0b0b';
-      win.document.body.style.color = '#eee';
-      win.document.body.style.fontFamily = 'Outfit, sans-serif';
-      win.document.body.style.padding = '18px';
-      win.document.body.innerHTML = '<div style="font-weight:700;margin-bottom:6px">Menu</div>' + html;
-    });
-  </script>
+    <script>
+        document.querySelector('.flower-icon').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
